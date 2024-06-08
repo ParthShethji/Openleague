@@ -1,7 +1,7 @@
 import { useState } from "react";
-
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
+import { TonConnectButton } from '@tonconnect/ui-react';
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
@@ -9,8 +9,8 @@ const Navbar = () => {
 
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
-      <img src={logo} alt="hoobank" className="w-[124px] h-[32px]" />
-
+      <img src={logo} alt="hoobank" className="w-[144px] h-[82px]" />
+      
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
           <li
@@ -23,9 +23,10 @@ const Navbar = () => {
             <a href={`#${nav.id}`}>{nav.title}</a>
           </li>
         ))}
-          <button className={`font-poppins font-normal cursor-pointer text-[16px] text-white ml-10`}>Hello</button>
+        <li>
+          <TonConnectButton className="font-poppins font-normal cursor-pointer text-[16px] text-white ml-10" />
+        </li>
       </ul>
-      
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <img
@@ -34,8 +35,6 @@ const Navbar = () => {
           className="w-[28px] h-[28px] object-contain"
           onClick={() => setToggle(!toggle)}
         />
-
-        
 
         <div
           className={`${
@@ -54,6 +53,9 @@ const Navbar = () => {
                 <a href={`#${nav.id}`}>{nav.title}</a>
               </li>
             ))}
+            <li className="mt-4">
+              <TonConnectButton className="font-poppins font-normal cursor-pointer text-[16px] text-white" />
+            </li>
           </ul>
         </div>
       </div>
